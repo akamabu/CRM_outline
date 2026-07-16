@@ -1,0 +1,11 @@
+{
+  "name": "vietcrm-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Angular app shell placeholder: scaffold with ng new before development'",
+    "test": "echo 'No frontend tests configured yet'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

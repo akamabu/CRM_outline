@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: vietcrm-backend
+server:
+  port: 8080

@@ -1,0 +1,7 @@
+{
+  "tenantId": "tenant-demo",
+  "fullName": "Nguyen Van A",
+  "email": "a@example.com",
+  "phone": "0900000001",
+  "source": "website"
+}
