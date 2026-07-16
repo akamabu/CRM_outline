@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: VietCRM MVP API
+  version: 0.1.0
+paths:
+  /api/v1/integrations/webhooks/leads:
+    post:
+      summary: Receive a lead from an external website or integration webhook.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadRequest'
+      responses:
+        '200':
+          description: Lead accepted.
+  /api/v1/leads:
+    get:
+      summary: List leads by optional tenant.
+      parameters:
+        - in: query
+          name: tenantId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lead list.
+    post:
+      summary: Create a lead manually.
+      responses:
+        '200':
+          description: Lead created.
+  /api/v1/leads/{id}/assign:
+    post:
+      summary: Assign a lead with simple round-robin logic.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lead assigned.
+  /api/v1/leads/{id}/convert:
+    post:
+      summary: Convert a lead into Customer, Deal and draft Quotation records.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lead converted.
+components:
+  schemas:
+    CreateLeadRequest:
+      type: object
+      required: [tenantId, fullName]
+      properties:
+        tenantId:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        source:
+          type: string
+
+# Additional MVP endpoints are implemented in the scaffold and will be expanded in the generated OpenAPI contract:
+# - /api/v1/customers
+# - /api/v1/deals
+# - /api/v1/tasks
+# - /api/v1/tickets
